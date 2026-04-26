@@ -8,10 +8,6 @@
     <meta name="description" content="Descubre exactamente cuánto dinero estás perdiendo este mes en WhatsApp y cómo recuperarlo con nuestro diagnóstico gratuito.">
     <meta name="author" content="Prospecta">
     
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="La Calculadora de Fugas de Capital | Prospecta">
-    <meta property="og:description" content="Descubre exactamente cuánto dinero estás perdiendo este mes en WhatsApp y cómo recuperarlo.">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
@@ -19,21 +15,14 @@
 
     <style>
         body { margin: 0; padding: 0; background-color: #020617; }
-        /* Ocultar las flechas de los inputs numéricos */
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
-        .chat-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-        .chat-scroll::-webkit-scrollbar-track {
-            background: transparent;
-        }
+        input[type="number"] { -moz-appearance: textfield; }
+        .chat-scroll::-webkit-scrollbar { width: 6px; }
+        .chat-scroll::-webkit-scrollbar-track { background: transparent; }
         .chat-scroll::-webkit-scrollbar-thumb {
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
@@ -46,7 +35,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // --- Generación de estrellas ---
+        // --- Estrellas y Constelaciones ---
         const headerStars = Array.from({ length: 60 }).map((_, i) => ({
           id: i,
           x: Math.random() * 600,
@@ -72,42 +61,28 @@
                     <animate attributeName="opacity" values={`${star.opacity};1;${star.opacity}`} dur={star.dur} begin={star.delay} repeatCount="indefinite" />
                   </circle>
                 ))}
-                {/* LEO */}
+                {/* LEO y PISCIS centradas */}
                 <g filter="url(#starGlow)" transform="translate(85, 10) scale(0.45)">
-                  <g stroke="rgba(255, 240, 200, 0.3)" strokeWidth="1.5" strokeDasharray="3 4" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <g stroke="rgba(255, 240, 200, 0.3)" strokeWidth="1.5" strokeDasharray="3 4" fill="none">
                     <path d="M 60 140 L 45 90 L 80 40 L 115 25 L 130 50" />
                     <path d="M 60 140 L 160 170 L 180 110 L 80 40" />
                     <path d="M 180 110 L 250 130 L 160 170" />
                   </g>
-                  <g fill="white" stroke="none">
-                    <circle cx="60" cy="140" r="5" opacity="0.9" />
-                    <circle cx="45" cy="90" r="3" opacity="0.8" />
-                    <circle cx="80" cy="40" r="4" opacity="0.8" />
-                    <circle cx="115" cy="25" r="3" opacity="0.8" />
-                    <circle cx="130" cy="50" r="3" opacity="0.8" />
-                    <circle cx="160" cy="170" r="4" opacity="0.8" />
-                    <circle cx="180" cy="110" r="4.5" opacity="0.8" />
-                    <circle cx="250" cy="130" r="4.5" opacity="0.9" />
+                  <g fill="white">
+                    <circle cx="60" cy="140" r="5" /><circle cx="45" cy="90" r="3" /><circle cx="80" cy="40" r="4" />
+                    <circle cx="115" cy="25" r="3" /><circle cx="130" cy="50" r="3" /><circle cx="160" cy="170" r="4" />
+                    <circle cx="180" cy="110" r="4.5" /><circle cx="250" cy="130" r="4.5" />
                   </g>
                 </g>
-                {/* PISCIS */}
                 <g filter="url(#starGlow)" transform="translate(255, 10) scale(0.45)">
-                  <g stroke="rgba(255, 240, 200, 0.3)" strokeWidth="1.5" strokeDasharray="3 4" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M 450 170 Q 480 110 540 50" />
-                    <path d="M 450 170 Q 400 140 330 80" />
-                    <path d="M 540 50 L 565 30 L 585 55 L 555 70 Z" />
-                    <path d="M 330 80 L 305 60 L 285 75 L 305 100 Z" />
+                  <g stroke="rgba(255, 240, 200, 0.3)" strokeWidth="1.5" strokeDasharray="3 4" fill="none">
+                    <path d="M 450 170 Q 480 110 540 50" /><path d="M 450 170 Q 400 140 330 80" />
+                    <path d="M 540 50 L 565 30 L 585 55 L 555 70 Z" /><path d="M 330 80 L 305 60 L 285 75 L 305 100 Z" />
                   </g>
-                  <g fill="white" stroke="none">
-                    <circle cx="450" cy="170" r="5" opacity="0.9" />
-                    <circle cx="540" cy="50" r="3" opacity="0.8" />
-                    <circle cx="565" cy="30" r="3" opacity="0.8" />
-                    <circle cx="585" cy="55" r="3" opacity="0.8" />
-                    <circle cx="555" cy="70" r="3" opacity="0.8" />
-                    <circle cx="330" cy="80" r="3" opacity="0.8" />
-                    <circle cx="305" cy="60" r="3" opacity="0.8" />
-                    <circle cx="285" cy="75" r="3" opacity="0.8" />
-                    <circle cx="305" cy="100" r="3" opacity="0.8" />
+                  <g fill="white">
+                    <circle cx="450" cy="170" r="5" /><circle cx="540" cy="50" r="3" /><circle cx="565" cy="30" r="3" />
+                    <circle cx="585" cy="55" r="3" /><circle cx="555" cy="70" r="3" /><circle cx="330" cy="80" r="3" />
+                    <circle cx="305" cy="60" r="3" /><circle cx="285" cy="75" r="3" /><circle cx="305" cy="100" r="3" />
                   </g>
                 </g>
               </svg>
@@ -116,48 +91,31 @@
         }
 
         // Iconos
-        const BotIcon = () => (
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0 shadow-lg border border-white/20">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path>
-            </svg>
-          </div>
+        const TrendingDownIcon = ({ className }) => (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"></polyline><polyline points="16 17 22 17 22 11"></polyline></svg>
         );
-
-        const SendIcon = () => (
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
+        const ShieldAlertIcon = ({ className }) => (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
         );
-
-        const PhoneIcon = () => (
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-          </svg>
+        const ArrowRightIcon = ({ className }) => (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        );
+        const StarIcon = ({ className, style }) => (
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className} style={style}><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" /></svg>
         );
 
         function App() {
+          const [step, setStep] = useState(0); // 0: Portada, 1: Chat
+          const [isHovered, setIsHovered] = useState(false);
           const messagesEndRef = useRef(null);
-          
           const [messages, setMessages] = useState([]);
           const [isTyping, setIsTyping] = useState(false);
-          const [inputMode, setInputMode] = useState('none'); 
+          const [inputMode, setInputMode] = useState('none');
           const [inputValue, setInputValue] = useState('');
           const [formData, setFormData] = useState({ prospectos: 0, valor: 0, perdidos: 0, perdidaMensual: 0 });
 
-          const formatCurrency = (value) => {
-            return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(value);
-          };
+          const formatCurrency = (value) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(value);
 
-          const scrollToBottom = () => {
-            messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-          };
-
-          useEffect(() => {
-            scrollToBottom();
-          }, [messages, isTyping]);
-
-          // Lógica de tipeo falso
           const typeMessage = async (msgObj, delay = 1500) => {
             setIsTyping(true);
             return new Promise(resolve => {
@@ -169,241 +127,157 @@
             });
           };
 
-          // --- SECUENCIA DE INICIO ---
-          useEffect(() => {
-            const startSequence = async () => {
-              await typeMessage({ id: 1, sender: 'bot', type: 'text', content: <p>La mayoría de los profesionales creen que su problema es la falta de prospectos. <strong className="text-amber-400">Falso.</strong> Tu problema es que tienes una tubería rota.</p> }, 1000);
-              await typeMessage({ id: 2, sender: 'bot', type: 'text', content: <p>Enviar catálogos y responder con precios sin una estrategia de persuasión activa la resistencia de tus clientes.</p> }, 2000);
-              await typeMessage({ id: 3, sender: 'bot', type: 'alert', content: <p><strong className="text-red-400">Advertencia:</strong> Ver tus propios números suele ser incómodo.</p> }, 1500);
-              await typeMessage({ id: 4, sender: 'bot', type: 'text', content: <p>¿Cuántos prospectos te contactan al mes? (Suma WhatsApp, DMs y llamadas)</p> }, 1500);
-              setInputMode('prospectos');
-            };
-            startSequence();
-          }, []);
+          const startChat = async () => {
+            setStep(1);
+            await typeMessage({ id: 1, sender: 'bot', type: 'text', content: <p>¡Hola! Empecemos con el diagnóstico. Como te mencioné, vamos a detectar las fugas.</p> }, 1000);
+            await typeMessage({ id: 2, sender: 'bot', type: 'text', content: <p>¿Cuántos prospectos te contactan al mes actualmente?</p> }, 1000);
+            setInputMode('prospectos');
+          };
 
           const handleSend = async (e) => {
             if (e) e.preventDefault();
-            if (!inputValue.trim() && inputMode !== 'button') return;
-
+            if (!inputValue.trim()) return;
             const userText = inputValue;
             setInputValue('');
-            
-            // Agregar mensaje del usuario
             setMessages(prev => [...prev, { id: Date.now(), sender: 'user', type: 'text', content: <p>{userText}</p> }]);
 
-            // Evaluar estado
             if (inputMode === 'prospectos') {
               setInputMode('none');
               setFormData(prev => ({ ...prev, prospectos: parseFloat(userText) || 0 }));
-              await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p>¿Cuál es el valor promedio de tu servicio/producto?</p> });
+              await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p>¿Cuál es el valor promedio de tu servicio o producto?</p> });
               setInputMode('valor');
-            } 
-            else if (inputMode === 'valor') {
+            } else if (inputMode === 'valor') {
               setInputMode('none');
               setFormData(prev => ({ ...prev, valor: parseFloat(userText) || 0 }));
               await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p>¿Cuántos de esos prospectos te dejan "en visto" o dicen "lo voy a pensar"?</p> });
               setInputMode('perdidos');
-            }
-            else if (inputMode === 'perdidos') {
+            } else if (inputMode === 'perdidos') {
               setInputMode('none');
               const perdidos = parseFloat(userText) || 0;
               const nuevaPerdida = perdidos * formData.valor;
-              setFormData(prev => ({ ...prev, perdidos: perdidos, perdidaMensual: nuevaPerdida }));
-              
-              await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p className="italic text-slate-400">Analizando tubería de ventas...</p> }, 1500);
-              
-              await typeMessage({ id: Date.now()+2, sender: 'bot', type: 'result_box', content: { 
-                title: 'El Resultado: Tu Impuesto por Inacción.', 
-                monto: formatCurrency(nuevaPerdida), 
-                anual: formatCurrency(nuevaPerdida * 12) 
-              }}, 2000);
-
-              await typeMessage({ id: Date.now()+3, sender: 'bot', type: 'text', content: <p>Este es el dinero exacto que le estás regalando a tu competencia ruidosa, no porque sean mejores que tú, sino porque ellos sí tienen un sistema de cierre. Cada día que sigues improvisando tus mensajes, esta cifra aumenta.</p> }, 2000);
-              
+              setFormData(prev => ({ ...prev, perdidos, perdidaMensual: nuevaPerdida }));
+              await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p className="italic text-slate-400">Analizando tus datos...</p> }, 1200);
+              await typeMessage({ id: Date.now()+2, sender: 'bot', type: 'result_box', content: { title: 'El Resultado: Tu Impuesto por Inacción.', monto: formatCurrency(nuevaPerdida), anual: formatCurrency(nuevaPerdida * 12) }}, 2000);
+              await typeMessage({ id: Date.now()+3, sender: 'bot', type: 'text', content: <p>Este es el dinero exacto que le estás regalando a tu competencia ruidosa. Cada día que sigues improvisando, esta cifra aumenta.</p> }, 1500);
               setMessages(prev => [...prev, { id: Date.now()+4, sender: 'bot', type: 'button', text: 'Ver qué significa esto para mi negocio', action: 'ver_impacto' }]);
             }
           };
 
           const handleButtonClick = async (action, btnText) => {
-            // Eliminar botones previos del chat y poner lo que eligió el usuario
             setMessages(prev => prev.filter(m => m.type !== 'button').concat({ id: Date.now(), sender: 'user', type: 'text', content: <p>{btnText}</p> }));
-            
             if (action === 'ver_impacto') {
-              await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p>Ver los números duele, pero ¿qué significa esto realmente en tu vida?</p> }, 1500);
-              await typeMessage({ id: Date.now()+2, sender: 'bot', type: 'text', content: <p>Esos <strong className="text-red-400">{formatCurrency(formData.perdidaMensual * 12)}</strong> anuales que se están esfumando representan <strong className="text-amber-400">[meses de tranquilidad financiera / la expansión de tu negocio / el tiempo libre que no tienes por trabajar horas extra]</strong>.</p> }, 2000);
-              await typeMessage({ id: Date.now()+3, sender: 'bot', type: 'text', content: <p>Tus prospectos no te ignoran porque no tengan dinero; te ignoran porque tu WhatsApp no está optimizado para generar confianza inmediata. Estás trabajando demasiado duro para perder ventas en el último metro.</p> }, 2000);
-              setMessages(prev => [...prev, { id: Date.now()+4, sender: 'bot', type: 'button', text: '¿Cómo detengo esta fuga?', action: 'ver_tips' }]);
-            }
-            else if (action === 'ver_tips') {
-              await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p><strong className="text-blue-400 font-bold text-lg">El Parche de Emergencia: 3 Micro-Tips para aplicar HOY.</strong><br/>Antes de rediseñar tu negocio, aquí tienes 3 acciones (basadas en neuro-ventas) que puedes integrar en tu WhatsApp ahora mismo para recuperar la atención de tus prospectos:</p> }, 1500);
-              await typeMessage({ id: Date.now()+2, sender: 'bot', type: 'tip', num: 1, text: <p><strong className="text-white">Elimina el "A sus órdenes":</strong> Reemplázalo por una pregunta de curiosidad como "Hola [Nombre], vi tu interés. Por curiosidad, ¿qué te motivó a buscar [tu servicio] hoy?". Esto baja sus defensas.</p> }, 2000);
-              await typeMessage({ id: Date.now()+3, sender: 'bot', type: 'tip', num: 2, text: <p><strong className="text-white">No envíes el catálogo de golpe:</strong> El catálogo sin contexto activa la huida. Primero pregunta: "¿Te hace sentido que te envíe la información de [X], o prefieres que veamos tu caso específico?"</p> }, 2000);
-              await typeMessage({ id: Date.now()+4, sender: 'bot', type: 'tip', num: 3, text: <p><strong className="text-white">Aplica la Regla de los 5 Minutos:</strong> Responder después de 15 minutos disminuye tu probabilidad de cierre en un 55%.</p> }, 2000);
-              await typeMessage({ id: Date.now()+5, sender: 'bot', type: 'text', content: <p>Estos tips son excelentes curitas, pero copiar, pegar y dar seguimiento manual a cada cliente requiere horas de trabajo y sacrificio todos los días. Para detener la fuga permanentemente, necesitas sistematizarlo.</p> }, 2500);
-              setMessages(prev => [...prev, { id: Date.now()+6, sender: 'bot', type: 'button', text: 'Ver la Solución Definitiva', action: 'ver_solucion' }]);
-            }
-            else if (action === 'ver_solucion') {
-              await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p><strong className="text-emerald-400 font-bold text-xl">Cierra la Fuga desde la Raíz.</strong></p> }, 1000);
-              await typeMessage({ id: Date.now()+2, sender: 'bot', type: 'text', content: <p>Tienes dos opciones: Puedes cerrar esta página y seguir perdiendo <strong className="text-red-400">{formatCurrency(formData.perdidaMensual)}</strong> mensuales, o puedes dejarnos auditar tu proceso.</p> }, 2000);
-              await typeMessage({ id: Date.now()+3, sender: 'bot', type: 'text', content: <p>En Prospecta, instalamos la Arquitectura de Persuasión en tu negocio (textos probados, seguimiento y optimización de tu perfil) para que el cliente te 'jale' hacia la venta.</p> }, 2000);
-              await typeMessage({ id: Date.now()+4, sender: 'bot', type: 'text', content: <p className="text-emerald-200">Reserva una Auditoría de Embudos gratuita de 15 Minutos conmigo. Te mostraré el punto exacto donde tus prospectos se caen. Si nuestro sistema Prospecta te puede ayudar a recuperar esos ingresos, te diremos cómo. Si no es para ti, te lo diremos con total honestidad y nos despedimos como amigos. ¿Te parece justo?</p> }, 2500);
-              setMessages(prev => [...prev, { id: Date.now()+5, sender: 'bot', type: 'final_cta' }]);
+              await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p>Esos <strong className="text-red-400">{formatCurrency(formData.perdidaMensual * 12)}</strong> anuales representan tu tranquilidad financiera y el tiempo libre que hoy no tienes.</p> }, 1500);
+              setMessages(prev => [...prev, { id: Date.now()+2, sender: 'bot', type: 'button', text: '¿Cómo detengo esta fuga?', action: 'ver_tips' }]);
+            } else if (action === 'ver_tips') {
+              await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p><strong className="text-blue-400">Tips de Emergencia:</strong><br/>1. Elimina el "A sus órdenes".<br/>2. No envíes catálogo sin contexto.<br/>3. Responde en menos de 5 min.</p> }, 2000);
+              setMessages(prev => [...prev, { id: Date.now()+2, sender: 'bot', type: 'button', text: 'Ver la Solución Definitiva', action: 'ver_solucion' }]);
+            } else if (action === 'ver_solucion') {
+              await typeMessage({ id: Date.now()+1, sender: 'bot', type: 'text', content: <p>Instalamos la Arquitectura de Persuasión para que el cliente te 'jale' hacia la venta. ¿Te parece justo una auditoría de 15 min?</p> }, 2000);
+              setMessages(prev => [...prev, { id: Date.now()+2, sender: 'bot', type: 'final_cta' }]);
             }
           };
 
           return (
             <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center font-sans text-slate-100 relative overflow-hidden">
-              
-              <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
-                <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-red-500/10 rounded-full blur-[120px]"></div>
-                <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-amber-500/10 rounded-full blur-[120px]"></div>
-              </div>
-
               <BackgroundConstellations />
 
-              {/* Contenedor Principal del Chat */}
-              <div className="w-full max-w-2xl h-[100dvh] md:h-[90vh] flex flex-col relative z-10 bg-white/[0.02] backdrop-blur-xl md:border md:border-white/10 md:rounded-3xl shadow-2xl overflow-hidden">
-                
-                {/* Header */}
-                <div className="p-4 bg-slate-950/80 border-b border-white/10 backdrop-blur-md flex items-center gap-4 z-20">
-                  <BotIcon />
-                  <div>
-                    <h1 className="font-bold text-white text-lg leading-tight tracking-wide">Estratega de WhatsApp</h1>
-                    <p className="text-xs text-emerald-400 flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> En línea
-                    </p>
-                  </div>
-                </div>
-
-                {/* Área de Mensajes */}
-                <div className="flex-1 overflow-y-auto chat-scroll p-4 space-y-6">
-                  
-                  {/* Título Decorativo Inicial */}
-                  <div className="text-center py-6">
-                    <h2 className="text-xl md:text-2xl font-extrabold leading-tight tracking-tight mb-2">
-                      La Calculadora de <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">"Fugas de Capital"</span>
-                    </h2>
-                    <p className="text-sm md:text-base text-slate-400">Descubre exactamente cuánto dinero estás perdiendo este mes en WhatsApp <span className="text-slate-500">(y cómo recuperarlo).</span></p>
-                  </div>
-
-                  {messages.map((msg) => (
-                    <div key={msg.id} className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      {msg.sender === 'bot' && msg.type !== 'button' && msg.type !== 'final_cta' && (
-                        <div className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex-shrink-0 mr-3 mt-1 flex items-center justify-center opacity-50">
-                          <span className="text-xs text-slate-400 font-bold">P</span>
+              {step === 0 ? (
+                /* PORTADA ORIGINAL RECONSTRUIDA */
+                <div className="relative z-10 w-full max-w-2xl p-4 animate-in fade-in zoom-in duration-700">
+                  <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
+                    <div className="h-1.5 w-full bg-gradient-to-r from-red-500 via-orange-500 to-amber-500"></div>
+                    <div className="p-8 md:p-12 text-center">
+                      <div className="flex justify-center mb-8">
+                        <div className="bg-red-500/10 p-4 rounded-2xl border border-red-500/20 shadow-[0_0_30px_rgba(239,68,68,0.2)]">
+                          <TrendingDownIcon className="w-10 h-10 text-red-400" />
                         </div>
-                      )}
-                      
-                      <div className={`max-w-[85%] sm:max-w-[75%] ${msg.sender === 'user' ? 'ml-auto' : ''}`}>
-                        
-                        {msg.type === 'text' && (
-                          <div className={`p-4 rounded-2xl text-sm md:text-base leading-relaxed ${
-                            msg.sender === 'user' 
-                              ? 'bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-tr-sm shadow-[0_0_15px_rgba(239,68,68,0.2)]' 
-                              : 'bg-slate-800/80 border border-slate-700/50 text-slate-200 rounded-tl-sm shadow-md'
-                          }`}>
-                            {msg.content}
-                          </div>
-                        )}
-
-                        {msg.type === 'alert' && (
-                          <div className="p-4 rounded-2xl bg-red-950/40 border border-red-900/50 text-red-200 text-sm md:text-base rounded-tl-sm">
-                            {msg.content}
-                          </div>
-                        )}
-
-                        {msg.type === 'result_box' && (
-                          <div className="bg-red-950/60 border border-red-500/50 rounded-3xl p-6 md:p-8 relative overflow-hidden group shadow-[0_0_30px_rgba(239,68,68,0.15)] rounded-tl-sm">
-                            <h3 className="text-lg md:text-xl font-bold text-slate-100 mb-4">{msg.content.title}</h3>
-                            <p className="text-slate-300 mb-1">Actualmente estás perdiendo</p>
-                            <h4 className="text-4xl md:text-5xl font-black text-red-500 mb-4 drop-shadow-lg tracking-tighter">
-                              {msg.content.monto} <span className="text-lg text-red-400/80 tracking-normal">/ mes</span>
-                            </h4>
-                            <div className="w-12 h-1 bg-red-500/30 mb-4 rounded-full"></div>
-                            <p className="text-red-200">Esto equivale a <strong className="text-white text-lg">{msg.content.anual}</strong> al año en ingresos perdidos.</p>
-                          </div>
-                        )}
-
-                        {msg.type === 'tip' && (
-                          <div className="bg-slate-900/80 border border-blue-500/30 rounded-2xl p-5 flex gap-4 items-start rounded-tl-sm">
-                            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs border border-blue-500/30">{msg.num}</div>
-                            <div className="text-slate-300 text-sm md:text-base">{msg.text}</div>
-                          </div>
-                        )}
-
-                        {msg.type === 'button' && (
-                          <button 
-                            onClick={() => handleButtonClick(msg.action, msg.text)}
-                            className="w-full mt-2 group relative inline-flex items-center justify-center px-6 py-4 bg-slate-800 hover:bg-slate-700 border border-amber-500/50 hover:border-amber-400 text-amber-400 text-sm md:text-base font-bold rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(245,158,11,0.1)] hover:shadow-[0_0_20px_rgba(245,158,11,0.2)] transform hover:-translate-y-0.5"
-                          >
-                            {msg.text}
-                          </button>
-                        )}
-
-                        {msg.type === 'final_cta' && (
-                          <a 
-                            href="https://wa.me/524425480329?text=Agendar%20mi%20Auditor%C3%ADa%20Gratuita%20y%20Detener%20la%20Fuga"
-                            target="_blank" rel="noopener noreferrer"
-                            className="w-full mt-4 flex items-center justify-center gap-3 px-6 py-5 bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-500 hover:to-green-400 text-white text-base md:text-lg font-black rounded-2xl transition-all duration-300 shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] transform hover:-translate-y-1 text-center leading-tight"
-                          >
-                            Agendar mi Auditoría Gratuita y Detener la Fuga
-                            <PhoneIcon />
-                          </a>
-                        )}
-
                       </div>
+                      <h1 className="text-3xl md:text-4xl font-extrabold leading-tight mb-6">
+                        La Calculadora de <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">"Fugas de Capital"</span>:
+                        <br/>
+                        <span className="text-2xl md:text-3xl font-semibold text-slate-300 mt-2 block">
+                          Descubre cuánto dinero pierdes en WhatsApp.
+                        </span>
+                      </h1>
+                      <div className="space-y-5 text-slate-300 text-lg mb-10">
+                        <p>La mayoría de los profesionales creen que su problema es la falta de prospectos. <strong>Falso.</strong> Tu problema es que tienes una tubería rota.</p>
+                      </div>
+                      <div className="bg-red-950/30 border border-red-900/50 rounded-xl p-5 flex items-start gap-4 mb-10 text-left">
+                        <ShieldAlertIcon className="w-6 h-6 text-red-400 flex-shrink-0" />
+                        <p className="text-red-200 text-sm italic"><strong>Advertencia:</strong> Ver tus propios números suele ser incómodo.</p>
+                      </div>
+                      <button 
+                        onClick={startChat}
+                        onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white text-lg font-bold rounded-full transition-all shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:scale-105"
+                      >
+                        <div className="absolute inset-0 overflow-hidden rounded-full">
+                           <StarIcon className="absolute top-2 left-6 w-3 h-3 animate-pulse" />
+                           <StarIcon className="absolute bottom-2 right-8 w-3 h-3 animate-pulse" />
+                        </div>
+                        <span className="relative z-10 uppercase tracking-wide">Iniciar Diagnóstico</span>
+                        <ArrowRightIcon className={`relative z-10 w-5 h-5 transition-transform ${isHovered ? 'translate-x-1' : ''}`} />
+                      </button>
                     </div>
-                  ))}
-
-                  {/* Indicador de Tipeo */}
-                  {isTyping && (
-                    <div className="flex w-full justify-start">
-                      <div className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex-shrink-0 mr-3 mt-1 flex items-center justify-center opacity-50">
-                        <span className="text-xs text-slate-400 font-bold">P</span>
-                      </div>
-                      <div className="bg-slate-800/80 border border-slate-700/50 rounded-2xl rounded-tl-sm p-4 flex gap-1 items-center h-12 shadow-md">
-                        <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                        <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                        <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                      </div>
-                    </div>
-                  )}
-                  
-                  <div ref={messagesEndRef} />
+                  </div>
                 </div>
+              ) : (
+                /* INTERFAZ DE CHAT */
+                <div className="w-full max-w-2xl h-[100dvh] md:h-[90vh] flex flex-col relative z-10 bg-white/[0.02] backdrop-blur-xl md:border md:border-white/10 md:rounded-3xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-8 duration-500">
+                  <div className="p-4 bg-slate-950/80 border-b border-white/10 flex items-center gap-4">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+                       <span className="text-xs font-bold text-white">P</span>
+                    </div>
+                    <h1 className="font-bold text-white text-lg">Estratega Prospecta</h1>
+                  </div>
 
-                {/* Input Área */}
-                <div className="p-4 bg-slate-950/90 border-t border-white/10 z-20">
-                  <form onSubmit={handleSend} className="relative flex items-center max-w-full">
-                    {inputMode === 'valor' && (
-                      <span className="absolute left-4 text-slate-400 font-medium z-10">$</span>
-                    )}
+                  <div className="flex-1 overflow-y-auto chat-scroll p-4 space-y-6">
+                    {messages.map((msg) => (
+                      <div key={msg.id} className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                        <div className={`max-w-[85%] ${msg.type === 'result_box' ? 'w-full' : ''}`}>
+                          {msg.type === 'text' && (
+                            <div className={`p-4 rounded-2xl text-sm md:text-base ${msg.sender === 'user' ? 'bg-orange-600 text-white rounded-tr-sm' : 'bg-slate-800 border border-slate-700 text-slate-200 rounded-tl-sm'}`}>
+                              {msg.content}
+                            </div>
+                          )}
+                          {msg.type === 'result_box' && (
+                            <div className="bg-red-950/60 border border-red-500/50 rounded-3xl p-6 text-center">
+                              <h3 className="text-lg font-bold mb-4">{msg.content.title}</h3>
+                              <h4 className="text-4xl font-black text-red-500 mb-2">{msg.content.monto} <span className="text-sm">/ mes</span></h4>
+                              <p className="text-red-200">Equivale a <strong className="text-white">{msg.content.anual}</strong> al año.</p>
+                            </div>
+                          )}
+                          {msg.type === 'button' && (
+                            <button onClick={() => handleButtonClick(msg.action, msg.text)} className="w-full mt-2 p-4 bg-slate-800 border border-amber-500/50 text-amber-400 font-bold rounded-xl hover:bg-slate-700 transition-all">
+                              {msg.text}
+                            </button>
+                          )}
+                          {msg.type === 'final_cta' && (
+                            <a href="https://wa.me/524425480329?text=Agendar%20mi%20Auditor%C3%ADa%20Gratuita" target="_blank" className="w-full mt-4 flex items-center justify-center gap-3 p-5 bg-emerald-600 text-white font-black rounded-2xl shadow-lg">
+                              Agendar Auditoría y Detener la Fuga
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                    {isTyping && <div className="text-xs text-slate-500 animate-pulse">Estratega escribiendo...</div>}
+                    <div ref={messagesEndRef} />
+                  </div>
+
+                  <form onSubmit={handleSend} className="p-4 bg-slate-950 border-t border-white/10 flex gap-2">
                     <input 
-                      type={inputMode !== 'none' ? 'number' : 'text'}
-                      value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
+                      type={inputMode === 'none' ? 'text' : 'number'}
+                      value={inputValue} onChange={(e) => setInputValue(e.target.value)}
                       disabled={inputMode === 'none'}
-                      placeholder={
-                        inputMode === 'none' ? (isTyping ? 'Escribiendo...' : 'Selecciona una opción arriba...') : 
-                        inputMode === 'valor' ? 'Ej. 500' : 'Escribe una cantidad (Ej. 100)'
-                      }
-                      className={`w-full bg-slate-900 border ${inputMode !== 'none' ? 'border-amber-500/50 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-white' : 'border-slate-800 text-slate-500 cursor-not-allowed'} rounded-full py-3.5 pr-14 transition-all shadow-inner outline-none ${inputMode === 'valor' ? 'pl-8' : 'pl-5'}`}
+                      placeholder={inputMode === 'none' ? 'Espera...' : 'Escribe tu respuesta...'}
+                      className="flex-1 bg-slate-900 border border-slate-800 rounded-full px-5 py-3 outline-none focus:border-amber-500"
                     />
-                    <button 
-                      type="submit"
-                      disabled={inputMode === 'none' || !inputValue.trim()}
-                      className={`absolute right-2 p-2 rounded-full transition-all flex items-center justify-center ${
-                        inputMode !== 'none' && inputValue.trim() 
-                          ? 'bg-amber-500 hover:bg-amber-400 text-slate-900 shadow-md transform hover:scale-105' 
-                          : 'bg-slate-800 text-slate-600 cursor-not-allowed'
-                      }`}
-                    >
-                      <SendIcon />
+                    <button type="submit" disabled={!inputValue.trim()} className="bg-amber-500 p-3 rounded-full text-slate-900">
+                      <ArrowRightIcon className="w-5 h-5" />
                     </button>
                   </form>
                 </div>
-
-              </div>
+              )}
             </div>
           );
         }
